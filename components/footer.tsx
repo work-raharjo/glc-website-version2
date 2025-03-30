@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
 
 export default function Footer() {
@@ -126,8 +127,24 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t mt-12 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} GLC - Infra & AI Ecosystem. All rights reserved.</p>
+        <div className="border-t mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} GLC - Infra & AI Ecosystem. All rights reserved.
+            </p>
+            <div className="flex items-center gap-6">
+              <div className="flex flex-col items-center">
+                <Image
+                  src="/images/iso27001.png"
+                  alt="ISO 27001 Certification"
+                  width={100}
+                  height={50}
+                  className="h-12 w-auto"
+                />
+                <span className="text-xs text-muted-foreground mt-1">ISO 27001</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
