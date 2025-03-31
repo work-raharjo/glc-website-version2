@@ -5,8 +5,10 @@ import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-// Update the navItems array to be empty since we want to remove all navigation items
-const navItems = []
+const navItems = [
+  { name: "About", href: "/#about" },
+  { name: "Portfolio", href: "/portfolio" },
+]
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -38,21 +40,13 @@ export default function Header() {
               key={item.name}
               href={item.href}
               className="text-sm font-medium transition-colors hover:text-primary"
-              onClick={(e) => {
-                if (item.href.startsWith("#")) {
-                  e.preventDefault()
-                  if (mounted) {
-                    document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" })
-                  }
-                }
-              }}
             >
               {item.name}
             </Link>
           ))}
-          <Button onClick={() => scrollToElement("contact")}>
-            Get in Touch
-          </Button>
+          <Link href="/contact">
+            <Button>Get in Touch</Button>
+          </Link>
         </nav>
 
         {/* Mobile menu button */}
@@ -71,28 +65,14 @@ export default function Header() {
                 key={item.name}
                 href={item.href}
                 className="block text-sm font-medium transition-colors hover:text-primary"
-                onClick={(e) => {
-                  if (item.href.startsWith("#")) {
-                    e.preventDefault()
-                    setMobileMenuOpen(false)
-                    if (mounted) {
-                      document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" })
-                    }
-                  }
-                }}
+                onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
-            <Button
-              className="w-full"
-              onClick={() => {
-                setMobileMenuOpen(false)
-                scrollToElement("contact")
-              }}
-            >
-              Get in Touch
-            </Button>
+            <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
+              <Button className="w-full">Get in Touch</Button>
+            </Link>
           </div>
         </div>
       )}

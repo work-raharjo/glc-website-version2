@@ -1,8 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 interface PortfolioItem {
   title: string;
@@ -17,33 +17,30 @@ interface PortfolioGridProps {
 
 export function PortfolioGrid({ items }: PortfolioGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
       {items.map((item, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          viewport={{ once: true }}
-          className="group relative overflow-hidden"
-        >
-          <Link href={item.link} className="block">
-            <div className="relative aspect-[4/3] overflow-hidden">
+        <Link href={item.link} key={item.title}>
+          <motion.div
+            className="group relative overflow-hidden rounded-lg bg-background shadow-lg hover:shadow-xl transition-all duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <div className="aspect-[16/9] relative">
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover transition-transform duration-300 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="text-white text-center p-6">
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-sm">{item.description}</p>
-                </div>
-              </div>
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
-          </Link>
-        </motion.div>
+            <div className="absolute inset-0 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-200">{item.description}</p>
+            </div>
+          </motion.div>
+        </Link>
       ))}
     </div>
   );

@@ -4,6 +4,8 @@ import { AnimatedText } from "@/components/animated-text";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { portfolioData, PortfolioItem } from "@/data/portfolioData";
+import { TechnologyPartners } from "@/components/technology-partners";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -30,29 +32,12 @@ const galleryItemVariants = {
 };
 
 interface PortfolioDetailProps {
-  project: {
-    title: string;
-    description: string;
-    image: string;
-    longDescription: string;
-    features: string[];
-    technologies: string[];
-    testimonials: Array<{
-      quote: string;
-      author: string;
-      role: string;
-      company: string;
-    }>;
-    relatedProjects: string[];
-    gallery: Array<{
-      image: string;
-      title: string;
-      description: string;
-    }>;
-  };
+  project: PortfolioItem;
 }
 
 export function PortfolioDetail({ project }: PortfolioDetailProps) {
+  const isDigitalTwin = project.title === "Digital Twin Solutions";
+
   return (
     <>
       {/* Hero Section */}
@@ -85,6 +70,8 @@ export function PortfolioDetail({ project }: PortfolioDetailProps) {
           />
         </div>
       </motion.section>
+
+      {isDigitalTwin && <TechnologyPartners />}
 
       {/* Content Section */}
       <motion.section 
@@ -201,7 +188,6 @@ export function PortfolioDetail({ project }: PortfolioDetailProps) {
                 className="bg-muted p-6 rounded-lg shadow-lg"
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.3 }}
-                {...fadeInUp}
               >
                 <p className="text-lg mb-4 italic">"{testimonial.quote}"</p>
                 <div>
@@ -225,31 +211,35 @@ export function PortfolioDetail({ project }: PortfolioDetailProps) {
             className="text-3xl font-bold text-center mb-16"
           />
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {project.relatedProjects.map((slug) => (
-              <Link 
-                key={slug} 
-                href={`/portfolio/${slug}`}
-                className="group"
-              >
-                <motion.div
-                  className="relative aspect-[4/3] overflow-hidden rounded-lg"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
+            {project.relatedProjects.map((slug) => {
+              const relatedProject = portfolioData[slug as keyof typeof portfolioData];
+              return (
+                <Link 
+                  key={slug} 
+                  href={`/portfolio/${slug}`}
+                  className="group"
                 >
-                  <Image
-                    src={`/images/${slug}.png`}
-                    alt={slug}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-white text-center p-6">
-                      <h3 className="text-xl font-semibold mb-2">{slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h3>
+                  <motion.div
+                    className="relative aspect-[4/3] overflow-hidden rounded-lg"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+                  >
+                    <Image
+                      src={relatedProject.image}
+                      alt={relatedProject.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="text-white text-center p-6">
+                        <h3 className="text-xl font-semibold mb-2">{relatedProject.title}</h3>
+                        <p className="text-sm">{relatedProject.description}</p>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              </Link>
-            ))}
+                  </motion.div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </motion.section>
