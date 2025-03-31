@@ -11,25 +11,25 @@ const portfolioData = {
   "digital-twin": {
     title: "Digital Twin Solutions",
     description: "Advanced digital twin technology for infrastructure monitoring and management",
-    image: "/images/digital-twin.png",
-    longDescription: "Our Digital Twin Solutions revolutionize infrastructure monitoring and management through cutting-edge technology. We create virtual replicas of physical assets, enabling real-time monitoring, predictive maintenance, and data-driven decision making.",
+    image: "/images/portfolio/digital-twin-hero.jpg",
+    longDescription: "Our Digital Twin Solutions revolutionize infrastructure monitoring and management through cutting-edge technology. We create virtual replicas of physical assets, enabling real-time monitoring, predictive maintenance, and data-driven decision making. Using advanced IoT sensors and AI algorithms, we provide unprecedented visibility into your infrastructure's performance.",
     features: [
-      "Real-time monitoring and visualization",
-      "Predictive maintenance capabilities",
-      "Data-driven decision making",
-      "Integration with existing systems",
-      "Scalable architecture"
+      "Real-time 3D visualization and monitoring",
+      "AI-powered predictive maintenance",
+      "IoT sensor integration and analytics",
+      "Cloud-based infrastructure management",
+      "Scalable and secure architecture"
     ],
-    technologies: ["IoT Sensors", "Cloud Computing", "AI/ML", "3D Visualization"],
+    technologies: ["IoT Sensors", "Cloud Computing", "AI/ML", "3D Visualization", "Edge Computing"],
     testimonials: [
       {
-        quote: "The digital twin solution has transformed how we monitor and maintain our infrastructure. It's been a game-changer for our operations.",
+        quote: "The digital twin solution has transformed how we monitor and maintain our infrastructure. The predictive maintenance capabilities have reduced our downtime by 45%.",
         author: "John Smith",
         role: "Operations Director",
         company: "InfraTech Solutions"
       },
       {
-        quote: "The predictive maintenance capabilities have saved us countless hours and significantly reduced downtime.",
+        quote: "The real-time visualization and analytics have given us unprecedented insights into our operations. We've improved efficiency by 30% since implementation.",
         author: "Sarah Johnson",
         role: "Maintenance Manager",
         company: "Smart Systems Inc."
@@ -38,44 +38,44 @@ const portfolioData = {
     relatedProjects: ["security", "infrastructure"],
     gallery: [
       {
-        image: "/images/digital-twin.png",
-        title: "Digital Twin Dashboard",
-        description: "Real-time monitoring interface"
+        image: "/images/portfolio/digital-twin-dashboard.jpg",
+        title: "Real-time Monitoring Dashboard",
+        description: "Advanced analytics and visualization interface"
       },
       {
-        image: "/images/hero-infrastructure.png",
-        title: "Infrastructure Visualization",
-        description: "3D model integration"
+        image: "/images/portfolio/digital-twin-modeling.jpg",
+        title: "3D Asset Modeling",
+        description: "High-precision digital modeling system"
       },
       {
-        image: "/images/security-system.png",
-        title: "Security Integration",
-        description: "System monitoring"
+        image: "/images/portfolio/digital-twin-analytics.jpg",
+        title: "Predictive Analytics",
+        description: "AI-powered maintenance forecasting"
       }
     ]
   },
   "security": {
-    title: "Data Center Security",
-    description: "Comprehensive security systems for modern data centers",
-    image: "/images/security-system.png",
-    longDescription: "Our Data Center Security solutions provide comprehensive protection for modern data centers. We implement multi-layered security measures to ensure the safety and integrity of your critical infrastructure.",
+    title: "Intelligent Security Systems",
+    description: "Next-generation security solutions for modern data centers",
+    image: "/images/portfolio/security-hero.jpg",
+    longDescription: "Our Intelligent Security Systems provide comprehensive protection for modern data centers and critical infrastructure. We combine advanced AI surveillance, biometric access control, and environmental monitoring to create a multi-layered security approach that ensures maximum protection while maintaining operational efficiency.",
     features: [
-      "24/7 monitoring and surveillance",
-      "Access control systems",
-      "Environmental monitoring",
-      "Fire detection and suppression",
-      "Emergency response protocols"
+      "AI-powered surveillance and threat detection",
+      "Multi-factor biometric access control",
+      "Real-time environmental monitoring",
+      "Automated incident response",
+      "Blockchain-secured audit trails"
     ],
-    technologies: ["Biometric Access", "CCTV Systems", "Environmental Sensors", "Fire Suppression"],
+    technologies: ["AI Vision", "Biometrics", "IoT Sensors", "Blockchain", "Cloud Security"],
     testimonials: [
       {
-        quote: "The security system implementation was seamless and provides us with complete peace of mind.",
+        quote: "The AI-powered threat detection has dramatically improved our security response time. We've seen a 60% reduction in false alarms.",
         author: "Michael Chen",
         role: "Security Director",
         company: "DataSecure Corp"
       },
       {
-        quote: "The multi-layered approach to security has significantly enhanced our data center's protection.",
+        quote: "The integration of biometric access control with environmental monitoring has created an unparalleled security ecosystem.",
         author: "Emily Rodriguez",
         role: "IT Manager",
         company: "TechGuard Solutions"
@@ -84,44 +84,44 @@ const portfolioData = {
     relatedProjects: ["digital-twin", "infrastructure"],
     gallery: [
       {
-        image: "/images/security-system.png",
-        title: "Security Control Center",
-        description: "24/7 monitoring dashboard"
+        image: "/images/portfolio/security-command.jpg",
+        title: "Security Command Center",
+        description: "Centralized security monitoring hub"
       },
       {
-        image: "/images/digital-twin.png",
-        title: "Access Control System",
-        description: "Biometric integration"
+        image: "/images/portfolio/security-biometrics.jpg",
+        title: "Biometric Access Control",
+        description: "Multi-factor authentication system"
       },
       {
-        image: "/images/hero-infrastructure.png",
+        image: "/images/portfolio/security-monitoring.jpg",
         title: "Environmental Monitoring",
-        description: "Real-time sensor data"
+        description: "Advanced sensor network deployment"
       }
     ]
   },
   "infrastructure": {
-    title: "Smart Infrastructure",
-    description: "Intelligent infrastructure solutions for sustainable development",
-    image: "/images/hero-infrastructure.png",
-    longDescription: "Smart Infrastructure solutions combine cutting-edge technology with sustainable practices to create efficient, resilient, and future-ready infrastructure systems. Our solutions help organizations optimize resource usage and improve operational efficiency.",
+    title: "Smart Infrastructure Solutions",
+    description: "Intelligent systems for sustainable urban development",
+    image: "/images/portfolio/infrastructure-hero.jpg",
+    longDescription: "Our Smart Infrastructure Solutions combine IoT technology, renewable energy systems, and AI-driven optimization to create sustainable and efficient urban environments. We help cities and organizations reduce their environmental impact while improving service delivery and quality of life for citizens.",
     features: [
-      "Resource optimization",
-      "Environmental monitoring",
-      "Energy efficiency",
-      "Smart maintenance",
-      "Real-time analytics"
+      "Smart energy management",
+      "Intelligent traffic control",
+      "Waste management optimization",
+      "Water distribution monitoring",
+      "Air quality tracking"
     ],
-    technologies: ["Smart Sensors", "Energy Management", "Analytics Platform", "IoT Integration"],
+    technologies: ["IoT", "Renewable Energy", "AI Analytics", "5G Networks", "Smart Sensors"],
     testimonials: [
       {
-        quote: "The smart infrastructure solution has helped us achieve significant energy savings while improving operational efficiency.",
+        quote: "The smart infrastructure implementation has reduced our energy consumption by 35% and significantly improved our sustainability metrics.",
         author: "David Kim",
         role: "Sustainability Director",
         company: "GreenTech Solutions"
       },
       {
-        quote: "The real-time analytics have given us unprecedented insights into our infrastructure performance.",
+        quote: "The integrated approach to urban management has transformed how we deliver services to our citizens. Response times are down 40%.",
         author: "Lisa Thompson",
         role: "Operations Manager",
         company: "SmartCity Systems"
@@ -130,19 +130,19 @@ const portfolioData = {
     relatedProjects: ["digital-twin", "security"],
     gallery: [
       {
-        image: "/images/hero-infrastructure.png",
-        title: "Smart Infrastructure",
-        description: "System overview"
+        image: "/images/portfolio/infrastructure-energy.jpg",
+        title: "Smart Energy Grid",
+        description: "Renewable energy integration"
       },
       {
-        image: "/images/digital-twin.png",
-        title: "Resource Management",
-        description: "Energy optimization"
+        image: "/images/portfolio/infrastructure-traffic.jpg",
+        title: "Traffic Management",
+        description: "AI-powered traffic optimization"
       },
       {
-        image: "/images/security-system.png",
-        title: "Monitoring Systems",
-        description: "Performance analytics"
+        image: "/images/portfolio/infrastructure-monitoring.jpg",
+        title: "Urban Monitoring",
+        description: "City-wide sensor network"
       }
     ]
   }
