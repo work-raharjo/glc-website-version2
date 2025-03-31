@@ -23,7 +23,7 @@ export const portfolioData: Record<string, PortfolioItem> = {
   "digital-twin": {
     title: "Digital Twin Solutions",
     description: "Advanced digital twin technology for infrastructure monitoring",
-    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80",
+    image: "/images/portfolio/digital-twin-hero.jpg",
     longDescription: "In partnership with 51World, we deliver state-of-the-art digital twin solutions that revolutionize urban infrastructure monitoring and management. Our Jakarta Digital Twin project showcases the power of creating high-fidelity virtual replicas of physical assets, enabling real-time monitoring, predictive maintenance, and data-driven decision making for smart city initiatives.",
     features: [
       "High-fidelity 3D city modeling with 51World technology",
@@ -50,34 +50,19 @@ export const portfolioData: Record<string, PortfolioItem> = {
     relatedProjects: ["security", "infrastructure"],
     gallery: [
       {
-        image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80",
+        image: "/images/portfolio/digitaltwin1.jpeg",
         title: "Digital Twin Overview",
-        description: "Comprehensive 3D visualization of urban infrastructure"
+        description: "Comprehensive view of digital twin implementation"
       },
       {
-        image: "https://images.unsplash.com/photo-1558442092-f97cd912eaa3?auto=format&fit=crop&q=80",
-        title: "Smart City Planning",
-        description: "Digital twin technology for urban development"
+        image: "/images/portfolio/digitaltwin planning.jpg",
+        title: "Digital Twin Planning",
+        description: "Strategic planning and implementation process"
       },
       {
-        image: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&q=80",
-        title: "Infrastructure Monitoring",
-        description: "Real-time monitoring of city assets"
-      },
-      {
-        image: "https://images.unsplash.com/photo-1563396983906-b3795482a59a?auto=format&fit=crop&q=80",
-        title: "Data Analytics Dashboard",
-        description: "Advanced analytics for urban management"
-      },
-      {
-        image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80",
-        title: "3D City Modeling",
-        description: "High-precision digital modeling of urban areas"
-      },
-      {
-        image: "https://images.unsplash.com/photo-1581092334247-ddef2a41fdd4?auto=format&fit=crop&q=80",
-        title: "Smart Infrastructure",
-        description: "Integration of IoT sensors and monitoring systems"
+        image: "/images/portfolio/Geospatial-Digital-Twins-overview-1.jpg",
+        title: "Geospatial Digital Twin",
+        description: "Advanced geospatial visualization and analysis"
       }
     ]
   },

@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
+import { Facebook, Twitter, Linkedin, Instagram, CheckCircle, Youtube } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -8,25 +8,23 @@ export default function Footer() {
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
-            <Link href="/" className="text-2xl font-bold">
-              GLC
-            </Link>
+            <div className="space-y-1">
+              <Link href="/" className="text-2xl font-bold">
+                GLC
+              </Link>
+              <p className="text-sm text-muted-foreground">PT Galactic Indonesia Perkasa</p>
+            </div>
             <p className="mt-2 text-sm text-muted-foreground">Infra & AI Ecosystem for Indonesia's Digital Future</p>
-            <div className="flex space-x-4 mt-4">
-              <Link href="#" className="text-muted-foreground hover:text-primary">
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary">
+            <div className="flex items-center space-x-2 mt-4">
+              <Link 
+                href="https://instagram.com/sewastarlinkjakarta" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary flex items-center gap-1"
+              >
                 <Instagram className="h-5 w-5" />
+                <span className="text-sm">@sewastarlinkjakarta</span>
+                <CheckCircle className="h-4 w-4 text-blue-500" />
                 <span className="sr-only">Instagram</span>
               </Link>
             </div>

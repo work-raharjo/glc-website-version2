@@ -15,7 +15,7 @@ export function TechnologyPartners() {
             transition={{ duration: 0.3 }}
           >
             <Image
-              src="/images/partners/51world-logo.svg"
+              src="/images/partners/51world-logo-2019-12-20-02.png"
               alt="51World - Digital Twin Technology Partner"
               fill
               className="object-contain p-4"

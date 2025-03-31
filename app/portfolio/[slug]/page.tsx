@@ -14,8 +14,8 @@ const fadeInUp = {
   transition: { duration: 0.5 }
 };
 
-export default async function PortfolioPage({ params }: { params: { slug: string } }) {
-  const slug = await Promise.resolve(params.slug);
+export default function PortfolioPage({ params }: { params: { slug: string } }) {
+  const slug = params.slug;
   const project = portfolioData[slug as keyof typeof portfolioData];
 
   if (!project) {

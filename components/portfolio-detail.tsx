@@ -126,50 +126,33 @@ export function PortfolioDetail({ project }: PortfolioDetailProps) {
       </motion.section>
 
       {/* Gallery Section */}
-      <motion.section 
-        className="py-20 bg-muted"
-        {...fadeInUp}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+        className="mt-16"
       >
-        <div className="container mx-auto px-4">
-          <AnimatedText
-            text="Project Gallery"
-            className="text-3xl font-bold text-center mb-16"
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {project.gallery.map((item, index) => (
-              <motion.div
-                key={index}
-                className="group relative aspect-[4/3] overflow-hidden rounded-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ 
-                  opacity: 1, 
-                  y: 0, 
-                  transition: {
-                    duration: 0.5,
-                    delay: index * 0.1
-                  }
-                }}
-                whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
-                viewport={{ once: true }}
-              >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6">
-                  <h3 className="text-xl font-semibold mb-2 text-white">{item.title}</h3>
-                  <p className="text-sm text-white/80">{item.description}</p>
+        <h3 className="text-2xl font-bold mb-8">Project Gallery</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {project.gallery.map((image, index) => (
+            <div key={index} className="relative aspect-[16/9]">
+              <Image
+                src={image.image}
+                alt={image.title}
+                fill
+                className="object-cover rounded-lg"
+              />
+              <div className="absolute inset-0 bg-black/60 flex items-center justify-center p-6">
+                <div className="text-center">
+                  <h4 className="text-xl font-semibold text-white mb-2">{image.title}</h4>
+                  <p className="text-white/90">{image.description}</p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </div>
+          ))}
         </div>
-      </motion.section>
+      </motion.div>
 
       {/* Testimonials Section */}
       <motion.section 
