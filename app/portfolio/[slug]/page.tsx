@@ -1,32 +1,32 @@
-import { portfolioData, type PortfolioItem } from "@/data/portfolioData"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import { AnimatedText } from "@/components/animated-text"
+import Image from "next/image"
+import { motion } from "framer-motion"
+import Link from "next/link"
 import { PortfolioDetail } from "@/components/portfolio-detail"
+import { notFound } from 'next/navigation'
+import { portfolioData } from "@/data/portfolioData"
 
-interface PortfolioPageProps {
-  params: {
-    slug: string
-  }
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5 }
 }
 
-export async function generateStaticParams() {
-  return portfolioData.map((project: PortfolioItem) => ({
-    slug: project.slug,
-  }))
-}
-
-export default async function PortfolioPage({ params }: PortfolioPageProps) {
-  const project = portfolioData.find((p: PortfolioItem) => p.slug === params.slug)
+export default function PortfolioPage({ params }: { params: { slug: string } }) {
+  const slug = params.slug
+  const project = portfolioData[slug as keyof typeof portfolioData]
 
   if (!project) {
-    return <div>Project not found</div>
+    notFound()
   }
 
   return (
-    <div>
+    <main className="flex min-h-screen flex-col">
       <Header />
       <PortfolioDetail project={project} />
       <Footer />
-    </div>
+    </main>
   )
 } 
