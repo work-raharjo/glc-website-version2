@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image'
+import { useState } from 'react'
 
 const partners = [
   {
@@ -74,6 +77,9 @@ const partners = [
 ]
 
 export function TechPartners() {
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [imageLoadings, setImageLoadings] = useState<Record<string, boolean>>({});
+
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 items-center justify-items-center py-8">
       {partners.map((partner) => (
@@ -81,14 +87,31 @@ export function TechPartners() {
           key={partner.name}
           className="w-40 h-24 relative hover:scale-110 transition-all duration-300 ease-in-out"
         >
-          <Image
-            src={partner.logo}
-            alt={`${partner.name} Logo`}
-            fill
-            className="object-contain"
-            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
-            priority
-          />
+          {!imageErrors[partner.name] ? (
+            <>
+              <Image
+                src={partner.logo}
+                alt={`${partner.name} Logo`}
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
+                priority
+                onError={() => setImageErrors(prev => ({ ...prev, [partner.name]: true }))}
+                onLoad={() => setImageLoadings(prev => ({ ...prev, [partner.name]: false }))}
+              />
+              {imageLoadings[partner.name] && (
+                <div className="absolute inset-0 flex items-center justify-center bg-muted animate-pulse">
+                  <span className="text-sm text-muted-foreground">Loading...</span>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-muted rounded-lg">
+              <span className="text-sm text-muted-foreground text-center px-2">
+                {partner.name}
+              </span>
+            </div>
+          )}
         </div>
       ))}
     </div>

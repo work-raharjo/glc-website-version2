@@ -15,7 +15,8 @@ const fadeInUp = {
 };
 
 export default async function PortfolioPage({ params }: { params: { slug: string } }) {
-  const project = portfolioData[params.slug as keyof typeof portfolioData];
+  const slug = await Promise.resolve(params.slug);
+  const project = portfolioData[slug as keyof typeof portfolioData];
 
   if (!project) {
     notFound();
