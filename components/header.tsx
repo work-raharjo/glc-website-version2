@@ -4,14 +4,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Portfolio", href: "/portfolio" },
-  { name: "Contact", href: "/contact" },
-]
-
 export default function Header() {
   const pathname = usePathname()
 
@@ -21,22 +13,17 @@ export default function Header() {
         <Link href="/" className="text-xl font-bold">
           GLC
         </Link>
-        <div className="hidden md:flex items-center space-x-8">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                pathname === item.href
-                  ? "text-primary"
-                  : "text-muted-foreground"
-              )}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
+        <Link
+          href="/contact"
+          className={cn(
+            "text-sm font-medium transition-colors hover:text-primary",
+            pathname === "/contact"
+              ? "text-primary"
+              : "text-muted-foreground"
+          )}
+        >
+          Contact Us
+        </Link>
       </nav>
     </header>
   )
