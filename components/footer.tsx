@@ -1,8 +1,13 @@
+"use client"
+
+import { useLanguage } from "@/lib/language-context"
 import Link from "next/link"
 import Image from "next/image"
 import { Facebook, Twitter, Linkedin, Instagram, CheckCircle, Youtube } from "lucide-react"
 
 export default function Footer() {
+  const { t } = useLanguage()
+
   return (
     <footer className="border-t bg-background">
       <div className="container py-12">
@@ -30,31 +35,21 @@ export default function Footer() {
             </div>
           </div>
           <div>
-            <h3 className="text-sm font-semibold mb-4">Solutions</h3>
+            <h3 className="text-sm font-semibold mb-4">{t('services.title')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="#" className="text-muted-foreground hover:text-primary">
-                  AI SaaS Suite
+                  {t('services.digitalTwin.title')}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="text-muted-foreground hover:text-primary">
-                  Digital Twin as a Service
+                  {t('services.security.title')}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="text-muted-foreground hover:text-primary">
-                  IoT as a Service
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary">
-                  Aerial Mapping
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary">
-                  Data Center Solutions
+                  {t('services.infrastructure.title')}
                 </Link>
               </li>
             </ul>
@@ -99,7 +94,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="#" className="text-muted-foreground hover:text-primary">
-                  About Us
+                  {t('nav.about')}
                 </Link>
               </li>
               <li>
@@ -114,7 +109,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="#" className="text-muted-foreground hover:text-primary">
-                  Contact
+                  {t('nav.contact')}
                 </Link>
               </li>
               <li>

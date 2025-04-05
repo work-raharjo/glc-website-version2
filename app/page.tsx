@@ -1,11 +1,15 @@
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import { AnimatedText } from "@/components/animated-text";
-import { PortfolioGrid } from "@/components/portfolio-grid";
-import { ProcessSection } from "@/components/process-section";
-import { ClientLogos } from "@/components/client-logos";
-import { TechPartners } from "@/components/tech-partners";
-import Link from "next/link";
+"use client"
+
+import { motion } from "framer-motion"
+import { useLanguage } from "@/lib/language-context"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
+import { AnimatedText } from "@/components/animated-text"
+import { PortfolioGrid } from "@/components/portfolio-grid"
+import { ProcessSection } from "@/components/process-section"
+import { ClientLogos } from "@/components/client-logos"
+import { TechPartners } from "@/components/tech-partners"
+import Link from "next/link"
 
 const portfolioItems = [
   {
@@ -58,6 +62,8 @@ const processSteps = [
 ];
 
 export default function Home() {
+  const { t } = useLanguage()
+
   return (
     <main className="flex min-h-screen flex-col">
       <Header />
@@ -66,12 +72,12 @@ export default function Home() {
       <section className="min-h-screen flex items-center justify-center bg-background">
         <div className="container mx-auto px-4 text-center">
           <AnimatedText
-            text="Creating Distinctive Digital Solutions"
+            text={t('hero.title')}
             className="text-5xl md:text-7xl font-bold mb-6"
             delay={0.2}
           />
           <AnimatedText
-            text="Since 2016"
+            text={t('hero.subtitle')}
             className="text-xl text-muted-foreground"
             delay={0.4}
           />
@@ -82,7 +88,7 @@ export default function Home() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <AnimatedText
-            text="Our Work"
+            text={t('portfolio.title')}
             className="text-4xl font-bold text-center mb-16"
           />
           <PortfolioGrid items={portfolioItems} />
@@ -93,12 +99,12 @@ export default function Home() {
       <section id="about" className="py-20 bg-muted">
         <div className="container mx-auto px-4">
           <AnimatedText
-            text="About Us"
+            text={t('nav.about')}
             className="text-4xl font-bold text-center mb-16"
           />
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-lg text-muted-foreground mb-8">
-              We are a leading provider of infrastructure and AI solutions, dedicated to transforming industries through innovative technology.
+              {t('services.subtitle')}
             </p>
           </div>
         </div>
@@ -133,17 +139,17 @@ export default function Home() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 text-center">
           <AnimatedText
-            text="Let's Work Together"
+            text={t('contact.title')}
             className="text-4xl font-bold mb-8"
           />
           <p className="text-xl text-muted-foreground mb-8">
-            Ready to create something amazing?
+            {t('contact.subtitle')}
           </p>
           <Link 
             href="/contact"
             className="inline-block px-8 py-4 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
           >
-            Get in Touch
+            {t('nav.contact')}
           </Link>
         </div>
       </section>
