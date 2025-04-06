@@ -10,14 +10,19 @@ export async function generateStaticParams() {
   }))
 }
 
-export default function PortfolioPage({ params }: { params: { slug: string } }) {
+export const dynamicParams = false
+
+export default function PortfolioPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
   const { slug } = params
-  
-  if (!slug || typeof slug !== 'string' || !(slug in portfolioData)) {
+  const project = portfolioData[slug as keyof typeof portfolioData]
+
+  if (!project) {
     notFound()
   }
-
-  const project = portfolioData[slug]
 
   return (
     <main className="flex min-h-screen flex-col">
