@@ -4,12 +4,20 @@ import { notFound } from 'next/navigation'
 import { portfolioData } from "@/data/portfolioData"
 import Header from "@/components/header"
 
-export default function PortfolioPage({ params }: { params: { slug: string } }) {
-  if (!params.slug || !(params.slug in portfolioData)) {
+interface PageProps {
+  params: {
+    slug: string
+  }
+}
+
+export default function PortfolioPage({ params }: PageProps) {
+  const { slug } = params
+
+  if (!slug || typeof slug !== 'string' || !(slug in portfolioData)) {
     notFound()
   }
 
-  const project = portfolioData[params.slug]
+  const project = portfolioData[slug]
 
   return (
     <main className="flex min-h-screen flex-col">

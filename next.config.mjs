@@ -21,9 +21,14 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  // Enable React Server Components
+  reactStrictMode: true,
+  serverComponents: true,
 }
 
-mergeConfig(nextConfig, userConfig)
+if (typeof userConfig !== 'undefined') {
+  mergeConfig(nextConfig, userConfig)
+}
 
 function mergeConfig(nextConfig, userConfig) {
   if (!userConfig) {
