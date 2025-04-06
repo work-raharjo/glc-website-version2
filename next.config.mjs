@@ -16,14 +16,12 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  output: 'standalone',
   experimental: {
     webpackBuildWorker: true,
-    parallelServerBuildTraces: true,
-    parallelServerCompiles: true,
   },
   // Enable React Server Components
   reactStrictMode: true,
-  serverComponents: true,
 }
 
 if (typeof userConfig !== 'undefined') {
