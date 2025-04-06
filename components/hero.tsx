@@ -14,9 +14,6 @@ export default function Hero() {
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
             Empowering Indonesia's Digital Future
           </h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            We are a leading technology solutions provider, delivering innovative digital transformation services across Indonesia.
-          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-[#0F1B2B] hover:bg-gray-100">
               Get Started
@@ -30,4 +27,3 @@ export default function Hero() {
     </section>
   )
 }
-
