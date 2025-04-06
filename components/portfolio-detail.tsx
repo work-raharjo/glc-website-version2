@@ -35,7 +35,7 @@ interface PortfolioDetailProps {
   project: PortfolioItem;
 }
 
-export function PortfolioDetail({ project }: PortfolioDetailProps) {
+const PortfolioDetail = ({ project }: PortfolioDetailProps) => {
   const isDigitalTwin = project.title === "Digital Twin Solutions";
 
   return (
@@ -252,4 +252,6 @@ export function PortfolioDetail({ project }: PortfolioDetailProps) {
       </motion.section>
     </>
   );
-} 
+};
+
+export default PortfolioDetail;

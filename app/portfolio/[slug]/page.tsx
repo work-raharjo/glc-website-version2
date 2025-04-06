@@ -1,9 +1,17 @@
-import Footer from "@/components/footer"
-import { PortfolioDetail } from "@/components/portfolio-detail"
-import { notFound } from 'next/navigation'
 import { portfolioData } from "@/data/portfolioData"
-import Header from "@/components/header"
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import dynamic from 'next/dynamic'
+
+const PortfolioDetail = dynamic(() => import('@/components/portfolio-detail'), {
+  ssr: true
+})
+const Header = dynamic(() => import('@/components/header'), {
+  ssr: true
+})
+const Footer = dynamic(() => import('@/components/footer'), {
+  ssr: true
+})
 
 type Props = {
   params: {
