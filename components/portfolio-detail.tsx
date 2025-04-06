@@ -6,9 +6,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { portfolioData, PortfolioItem } from "@/data/portfolioData";
 import { TechnologyPartners } from "@/components/technology-partners";
-import { useLanguage } from "@/lib/language-context";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -35,171 +32,224 @@ const galleryItemVariants = {
 };
 
 interface PortfolioDetailProps {
-  slug: string;
+  project: PortfolioItem;
 }
 
-export function PortfolioDetail({ slug }: PortfolioDetailProps) {
-  const { t, language } = useLanguage();
-  const project = portfolioData[slug];
-
-  if (!project) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold">{t('portfolio.notFound')}</h1>
-        <p className="mt-4">{t('portfolio.notFoundDesc')}</p>
-        <Link href="/portfolio">
-          <Button className="mt-6">{t('portfolio.backToPortfolio')}</Button>
-        </Link>
-      </div>
-    );
-  }
-
-  const isDigitalTwin = project.title[language] === t('portfolio.digitalTwin.title');
+export function PortfolioDetail({ project }: PortfolioDetailProps) {
+  const isDigitalTwin = project.title === "Digital Twin Solutions";
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <>
       {/* Hero Section */}
-      <div className="relative h-[400px] w-full rounded-lg overflow-hidden mb-8">
-        <Image
-          src={project.image}
-          alt={project.title[language]}
-          fill
-          className="object-cover"
-          priority
-        />
-      </div>
-
-      {/* Project Title and Description */}
-      <h1 className="text-4xl font-bold mb-4">{project.title[language]}</h1>
-      <p className="text-xl text-muted-foreground mb-8">
-        {project.description[language]}
-      </p>
-
-      {/* Overview */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">{t('portfolio.overview')}</h2>
-        <p className="text-lg leading-relaxed">
-          {project.longDescription[language]}
-        </p>
-      </div>
-
-      {/* Key Features */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">{t('portfolio.features')}</h2>
-        <ul className="list-disc list-inside space-y-2">
-          {project.features.map((feature, index) => (
-            <li key={index} className="text-lg">
-              {feature[language]}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Technologies */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">{t('portfolio.technologies')}</h2>
-        <div className="flex flex-wrap gap-2">
-          {project.technologies.map((tech, index) => (
-            <span
-              key={index}
-              className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
-            >
-              {tech}
-            </span>
-          ))}
+      <motion.section 
+        className="relative h-[60vh] flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
-      </div>
-
-      {/* Gallery */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6">{t('portfolio.gallery')}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {project.gallery.map((item, index) => (
-            <div key={index} className="space-y-2">
-              <div className="relative h-48 w-full rounded-lg overflow-hidden">
-                <Image
-                  src={item.image}
-                  alt={item.title[language]}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-semibold">{item.title[language]}</h3>
-              <p className="text-sm text-muted-foreground">
-                {item.description[language]}
-              </p>
-            </div>
-          ))}
+        <div className="container mx-auto px-4 text-center text-white relative z-10">
+          <AnimatedText
+            text={project.title}
+            className="text-4xl md:text-6xl font-bold mb-4"
+            delay={0.2}
+          />
+          <AnimatedText
+            text={project.description}
+            className="text-xl md:text-2xl"
+            delay={0.4}
+          />
         </div>
-      </div>
-
-      {/* Testimonials */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6">{t('portfolio.testimonials')}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {project.testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="p-6 rounded-lg bg-card border"
-            >
-              <p className="text-lg mb-4 italic">"{testimonial.quote[language]}"</p>
-              <div>
-                <p className="font-semibold">{testimonial.author}</p>
-                <p className="text-sm text-muted-foreground">
-                  {testimonial.role[language]} - {testimonial.company}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Related Projects */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6">{t('portfolio.relatedProjects')}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {project.relatedProjects.map((relatedSlug) => {
-            const relatedProject = portfolioData[relatedSlug];
-            if (!relatedProject) return null;
-            
-            return (
-              <Link
-                key={relatedSlug}
-                href={`/portfolio/${relatedSlug}`}
-                className="group"
-              >
-                <div className="relative h-48 w-full rounded-lg overflow-hidden mb-2">
-                  <Image
-                    src={relatedProject.image}
-                    alt={relatedProject.title[language]}
-                    fill
-                    className="object-cover transition-transform group-hover:scale-105"
-                  />
-                </div>
-                <h3 className="font-semibold group-hover:text-primary">
-                  {relatedProject.title[language]}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {relatedProject.description[language]}
-                </p>
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Call to Action */}
-      <div className="text-center py-12 bg-card rounded-lg border">
-        <h2 className="text-3xl font-bold mb-4">{t('portfolio.ctaTitle')}</h2>
-        <p className="text-lg text-muted-foreground mb-6">
-          {t('portfolio.ctaDescription')}
-        </p>
-        <Link href="/contact">
-          <Button size="lg">{t('portfolio.contactUs')}</Button>
-        </Link>
-      </div>
+      </motion.section>
 
       {isDigitalTwin && <TechnologyPartners />}
-    </div>
+
+      {/* Content Section */}
+      <motion.section 
+        className="py-20 bg-background"
+        {...fadeInUp}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <AnimatedText
+              text="Project Overview"
+              className="text-3xl font-bold mb-8"
+            />
+            <p className="text-lg text-muted-foreground mb-12">
+              {project.longDescription}
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              <motion.div {...fadeInUp}>
+                <h3 className="text-2xl font-semibold mb-6">Key Features</h3>
+                <ul className="space-y-4">
+                  {project.features.map((feature, index) => (
+                    <motion.li 
+                      key={index} 
+                      className="flex items-start group"
+                      whileHover={{ x: 5 }}
+                    >
+                      <span className="text-primary mr-2 group-hover:scale-110 transition-transform">•</span>
+                      {feature}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div {...fadeInUp}>
+                <h3 className="text-2xl font-semibold mb-6">Technologies Used</h3>
+                <ul className="space-y-4">
+                  {project.technologies.map((tech, index) => (
+                    <motion.li 
+                      key={index} 
+                      className="flex items-start group"
+                      whileHover={{ x: 5 }}
+                    >
+                      <span className="text-primary mr-2 group-hover:scale-110 transition-transform">•</span>
+                      {tech}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Gallery Section */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+        className="mt-16"
+      >
+        <h3 className="text-2xl font-bold mb-8">Project Gallery</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {project.gallery.map((image, index) => (
+            <div key={index} className="relative aspect-[16/9]">
+              <Image
+                src={image.image}
+                alt={image.title}
+                fill
+                className="object-cover rounded-lg"
+              />
+              <div className="absolute inset-0 bg-black/60 flex items-center justify-center p-6">
+                <div className="text-center">
+                  <h4 className="text-xl font-semibold text-white mb-2">{image.title}</h4>
+                  <p className="text-white/90">{image.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Testimonials Section */}
+      <motion.section 
+        className="py-20 bg-background"
+        {...fadeInUp}
+      >
+        <div className="container mx-auto px-4">
+          <AnimatedText
+            text="Client Testimonials"
+            className="text-3xl font-bold text-center mb-16"
+          />
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {project.testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                className="bg-muted p-6 rounded-lg shadow-lg"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <p className="text-lg mb-4 italic">"{testimonial.quote}"</p>
+                <div>
+                  <p className="font-semibold">{testimonial.author}</p>
+                  <p className="text-sm text-muted-foreground">{testimonial.role}, {testimonial.company}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Related Projects Section */}
+      <motion.section 
+        className="py-20 bg-muted"
+        {...fadeInUp}
+      >
+        <div className="container mx-auto px-4">
+          <AnimatedText
+            text="Related Projects"
+            className="text-3xl font-bold text-center mb-16"
+          />
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {project.relatedProjects.map((slug) => {
+              const relatedProject = portfolioData[slug as keyof typeof portfolioData];
+              return (
+                <Link 
+                  key={slug} 
+                  href={`/portfolio/${slug}`}
+                  className="group"
+                >
+                  <motion.div
+                    className="relative aspect-[4/3] overflow-hidden rounded-lg"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+                  >
+                    <Image
+                      src={relatedProject.image}
+                      alt={relatedProject.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="text-white text-center p-6">
+                        <h3 className="text-xl font-semibold mb-2">{relatedProject.title}</h3>
+                        <p className="text-sm">{relatedProject.description}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* CTA Section */}
+      <motion.section 
+        className="py-20 bg-background"
+        {...fadeInUp}
+      >
+        <div className="container mx-auto px-4 text-center">
+          <AnimatedText
+            text="Ready to Start Your Project?"
+            className="text-3xl font-bold mb-8"
+          />
+          <p className="text-xl text-muted-foreground mb-8">
+            Let's discuss how we can help bring your vision to life.
+          </p>
+          <motion.a
+            href="/contact"
+            className="inline-block px-8 py-4 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Get in Touch
+          </motion.a>
+        </div>
+      </motion.section>
+    </>
   );
 } 

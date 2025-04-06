@@ -29,11 +29,6 @@ const partners = [
     description: "Power Management Partner"
   },
   {
-    name: "Delta UPS",
-    logo: "/images/partners/png-transparent-delta-electronics-logo-delta-air-lines-power-converters-electronics-miscellaneous-blue-electronics.png",
-    description: "Uninterruptible Power Supply Partner"
-  },
-  {
     name: "APC",
     logo: "/images/partners/apc-by-schneider-logo-png_seeklogo-268480.png",
     description: "Power Solutions Partner"

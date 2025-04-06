@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react'
 import Link from 'next/link'
-import { useLanguage } from '@/lib/language-context'
 
 export default function Error({
   error,
@@ -11,8 +10,6 @@ export default function Error({
   error: Error & { digest?: string }
   reset: () => void
 }) {
-  const { t } = useLanguage();
-  
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error)
@@ -21,8 +18,8 @@ export default function Error({
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="text-center">
-        <h2 className="text-4xl font-bold mb-4">{t('error.title')}</h2>
-        <p className="text-muted-foreground mb-8">{t('error.message')}</p>
+        <h2 className="text-4xl font-bold mb-4">Something went wrong!</h2>
+        <p className="text-muted-foreground mb-8">An error occurred while loading this page</p>
         <div className="space-x-4">
           <button
             onClick={reset}
@@ -34,7 +31,7 @@ export default function Error({
             href="/"
             className="inline-block px-6 py-3 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/90 transition-colors"
           >
-            {t('error.back')}
+            Return Home
           </Link>
         </div>
       </div>

@@ -6,6 +6,29 @@ interface Client {
   description: string;
 }
 
+interface LogoItemProps {
+  name: string;
+  logo: string;
+  description: string;
+}
+
+function LogoItem({ name, logo, description }: LogoItemProps) {
+  return (
+    <div className="group relative w-full max-w-[200px] aspect-[3/2] flex items-center justify-center">
+      <Image
+        src={logo}
+        alt={name}
+        width={160}
+        height={80}
+        className="w-full h-full object-contain transition-all duration-300"
+      />
+      <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+        <p className="text-white text-sm text-center">{description}</p>
+      </div>
+    </div>
+  );
+}
+
 const clients: Client[] = [
   {
     name: "Pertamina",
@@ -21,11 +44,6 @@ const clients: Client[] = [
     name: "Waskita",
     logo: "/images/clients/Waskita_Karya.svg.png",
     description: "State-owned construction company"
-  },
-  {
-    name: "PDI Perjuangan",
-    logo: "/images/clients/Lambang_Partai_Demokrasi_Indonesia_Perjuangan.svg.png",
-    description: "Indonesian Democratic Party of Struggle"
   },
   {
     name: "Allo Bank",
@@ -59,23 +77,9 @@ export function ClientLogos() {
     <div className="w-full max-w-7xl mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center">
         {clients.map((client) => (
-          <div
-            key={client.name}
-            className="group relative w-full max-w-[200px] aspect-[3/2] flex items-center justify-center"
-          >
-            <Image
-              src={client.logo}
-              alt={client.name}
-              width={160}
-              height={80}
-              className="w-full h-full object-contain transition-all duration-300"
-            />
-            <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-              <p className="text-white text-sm text-center">{client.description}</p>
-            </div>
-          </div>
+          <LogoItem key={client.name} {...client} />
         ))}
       </div>
     </div>
   );
-} 
+}

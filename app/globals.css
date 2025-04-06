@@ -217,6 +217,16 @@ body {
   @apply bg-white border border-[#E5E5E5] hover:border-[#0F1B2B] transition-all duration-200;
 }
 
+/* Hide scrollbar */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
 /* Animation Keyframes */
 @keyframes blob {
   0% {

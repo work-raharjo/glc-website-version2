@@ -48,36 +48,39 @@ export default function Portfolio() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {portfolioItems.map((item, index) => (
-            <Card key={index} className="border-0 shadow-md hover:shadow-lg transition-shadow overflow-hidden">
-              <div className="relative h-48 w-full">
-                <Image src={item.image || "/placeholder.svg"} alt={item.title} fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-4 left-4">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/20 text-white backdrop-blur-sm">
-                    {item.location}
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-col h-full">
-                <CardHeader className="pb-2">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <item.icon className="h-5 w-5 text-primary" />
+        <div className="overflow-x-auto hide-scrollbar">
+          <div className="flex gap-8 p-4">
+            {portfolioItems.map((item, index) => (
+              <Card key={index} className="border-0 shadow-md hover:shadow-lg transition-shadow overflow-hidden min-w-[400px]">
+                <div className="flex flex-col h-full">
+                  <div className="relative h-48 w-full">
+                    <Image src={item.image || "/placeholder.svg"} alt={item.title} fill className="object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/20 text-white backdrop-blur-sm">
+                        {item.location}
+                      </span>
                     </div>
-                    <CardTitle>{item.title}</CardTitle>
                   </div>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p className="text-muted-foreground">{item.description}</p>
-                </CardContent>
-              </div>
-            </Card>
-          ))}
+                  <div className="flex-1 flex flex-col">
+                    <CardHeader className="pb-2">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                          <item.icon className="h-5 w-5 text-primary" />
+                        </div>
+                        <CardTitle>{item.title}</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="flex-grow">
+                      <p className="text-muted-foreground">{item.description}</p>
+                    </CardContent>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   )
 }
-

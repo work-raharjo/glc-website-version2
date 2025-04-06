@@ -2,11 +2,8 @@
 
 import { AnimatedText } from "@/components/animated-text";
 import { motion } from "framer-motion";
-import { useLanguage } from "@/lib/language-context";
 
 export default function ContactPage() {
-  const { t } = useLanguage();
-  
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -19,12 +16,12 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <AnimatedText
-              text={t('contact.title')}
+              text="Get in Touch"
               className="text-4xl md:text-6xl font-bold mb-6"
               delay={0.2}
             />
             <AnimatedText
-              text={t('contact.subtitle')}
+              text="Fill out the form below to start your project"
               className="text-xl text-muted-foreground"
               delay={0.4}
             />
@@ -45,7 +42,7 @@ export default function ContactPage() {
               <iframe
                 src="https://forms.fillout.com/t/vQaEm2ef2Dus"
                 className="w-full h-[800px] border-0"
-                title={t('contact.form.submit')}
+                title="Contact Form"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
@@ -63,10 +60,10 @@ export default function ContactPage() {
       >
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-8">{t('contact.info.title')}</h2>
+            <h2 className="text-3xl font-bold mb-8">Other Ways to Connect</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold mb-4">{t('contact.info.email')}</h3>
+                <h3 className="text-xl font-semibold mb-4">Email</h3>
                 <p className="text-muted-foreground">
                   <a href="mailto:contact@glc.com" className="hover:text-primary transition-colors">
                     contact@glc.com
@@ -74,7 +71,7 @@ export default function ContactPage() {
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold mb-4">{t('contact.info.phone')}</h3>
+                <h3 className="text-xl font-semibold mb-4">Phone</h3>
                 <p className="text-muted-foreground">
                   <a href="tel:+1234567890" className="hover:text-primary transition-colors">
                     +1 (234) 567-890
