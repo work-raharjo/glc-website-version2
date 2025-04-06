@@ -16,7 +16,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  output: 'standalone',
+  output: 'export',
+  distDir: '.next',
   experimental: {
     webpackBuildWorker: true,
   },
