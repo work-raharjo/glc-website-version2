@@ -14,8 +14,8 @@ const fadeInUp = {
   transition: { duration: 0.5 }
 }
 
-export default function PortfolioPage({ params }: { params: { slug: string } }) {
-  const slug = params.slug
+export default async function PortfolioPage({ params }: { params: { slug: string } }) {
+  const slug = await params.slug
   const project = portfolioData[slug as keyof typeof portfolioData]
 
   if (!project) {
@@ -29,4 +29,4 @@ export default function PortfolioPage({ params }: { params: { slug: string } }) 
       <Footer />
     </main>
   )
-} 
+}
